@@ -1,0 +1,78 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "SUSE Mono", sans-serif;
+  font-size: 1.2rem;
+}
+
+h1 {
+  text-align: center;
+  font-size: 4.375rem;
+  font-family: "Rye", serif;
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+
+h2 {
+  text-align: center;
+  font-family: "Rye", serif;
+  font-size: 1.875rem;
+  width: 100%;
+}
+h3 {
+  font-size: 1.63rem;
+  padding: 13px 0 13px 0;
+}
+header {
+  background: url(https://yourwesterndecorating.com/cdn/shop/files/On-Standby-western-horse-art-your-western-decor.webp?v=1723516195&width=5000);
+  height: 500px;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+main {
+  width: 53%;
+  display: inline-block;
+}
+aside {
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  bottom: 10px;
+  position: fixed;
+  width: 600px;
+}
+a {
+  color: #8b4513;
+}
+a:hover {
+  color: black;
+}
+a:visited {
+  color: #8f7c6d;
+}
+article,
+section {
+  padding-left: 30px;
+  padding-bottom: 40px;
+}
+figure > img {
+  width: 350px;
+  height: 400px;
+  position: absolute;
+  right: 150px;
+  top: 510px;
+  opacity: 0;
+  transition: opacity 1s ease-in-out;
+}
+figure > img.visible {
+  opacity: 1;
+}
+footer > small {
+  font-size: small;
+}
+
+*:not(header):not(h1):not(h2) {
+  background-color: #f0ece9;
+}
