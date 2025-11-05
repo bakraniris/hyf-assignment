@@ -57,3 +57,14 @@ if (juliaHousePrice > housePrice2) {
 }   else {
     console.log("Julia is paying the correct price.");
 }
+
+//Ez Namey (Startup name generator) 
+
+let firstWords = ["Easy", "Awesome", "Corporate", "Innovative", "Creative", "Dynamic", "NextGen", "Future", "Tech", "Smart", "Global", "Virtual", "Advanced", "Digital", "Intelligent", "Visionary", "Cutting-Edge", "Revolutionary", "Progressive", "Leading", "Pioneering", "Transformative", "Disruptive", "Agile", "Synergistic", "Next-Level", "State-of-the-Art", "Groundbreaking", "Trailblazing", "Forward-Thinking"];
+let secondWords = ["Solutions", "Technologies", "Concepts", "Ideas", "Systems", "Ventures", "Synamic", "Innovations", "Enterprises", "Networks", "Platforms", "Services", "Strategies", "Developments", "Creations", "Designs", "Models", "Frameworks", "Architectures", "Ecosystems", "Infrastructures", "Mechanisms", "Processes", "Operations", "Functions", "Capabilities", "Potentials", "Possibilities", "Opportunities", "Horizons", "Dimensions", "Realities", "Experiences"];
+
+let randomFirstWord = firstWords[Math.floor(Math.random() * firstWords.length)];
+let randomSecondWord = secondWords[Math.floor(Math.random() * secondWords.length)];
+
+let startupName = randomFirstWord + " " + randomSecondWord;
+console.log("The startup: " + startupName + " contains " + startupName.length + " characters.");
