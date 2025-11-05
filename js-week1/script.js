@@ -20,22 +20,40 @@ if (shouldShowResultInDogYears === true) {
 }
 
 // House price estimator 
-let houseWidth = 8;
-let houseDepth = 10;
-let houseHeight = 10;
-let gardenSize = 100;
-let volumeInMeters = houseWidth * houseDepth * houseHeight; 
-let housePrice = volumeInMeters * 2.5 * 1000 + gardenSize * 300;
+// Peter's house
+let houseWidthPeter = 8;
+let houseDepthPeter = 10;
+let houseHeightPeter = 10;
+let gardenSizePeter = 100;
+let volumeInMetersPeter = houseWidthPeter * houseDepthPeter * houseHeightPeter; 
+let housePrice1 = volumeInMetersPeter * 2.5 * 1000 + gardenSizePeter * 300;
 
-console.log("The house price should be: " + housePrice + " DKK.");
+console.log("The house price should be: " + housePrice1 + " DKK.");
 
 let peterHousePrice = 2500000;
 
-if (peterHousePrice > housePrice) {
-    console.log("Peter is paying too much, because the house price should be: " + housePrice + " DKK.");
-}   else if (peterHousePrice < housePrice) {
-    console.log("Peter is paying too little, because the house price should be: " + housePrice + " DKK.");
+if (peterHousePrice > housePrice1) {
+    console.log("Peter is paying too much, because the house price should be " + housePrice1 + " DKK.");
+}   else if (peterHousePrice < housePrice1) {
+    console.log("Peter is paying too little, because the house price should be " + housePrice1 + " DKK.");
 }   else {
     console.log("Peter is paying the correct price.");
 }
+// Julia's house
+let houseWidthJulia = 5;
+let houseDepthJulia = 11;
+let houseHeightJulia = 8;
+let gardenSizeJulia = 70;
+let volumeInMetersJulia = houseWidthJulia * houseDepthJulia * houseHeightJulia; 
+let housePrice2 = volumeInMetersJulia * 2.5 * 1000 + gardenSizeJulia * 300;
 
+console.log("The house price should be: " + housePrice2 + " DKK.");
+
+let juliaHousePrice = 1000000;
+if (juliaHousePrice > housePrice2) {
+    console.log("Julia is paying too much, because the house price should be " + housePrice2 + " DKK.");
+}   else if (juliaHousePrice < housePrice2) {
+    console.log("Julia is paying too little, because the house price should be " + housePrice2 + " DKK.");
+}   else {
+    console.log("Julia is paying the correct price.");
+}
