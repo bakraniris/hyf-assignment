@@ -106,3 +106,51 @@ function getNumberOfStudents() {
 }
 
 getNumberOfStudents();
+
+
+// Exercise 5: Candy helper 
+
+const candyTypeAndPricesPerGram = [
+    ["sweet", 0.5],
+    ["chocolate", 0.7],
+    ["toffee", 1.1],
+    ["chewing-gum", 0.03]
+]
+const boughtCandyPrices = [];
+
+function addCandy(candyType, weight) {
+    const candy = candyTypeAndPricesPerGram.find(c => c[0] === candyType);
+    if (!candy) {
+    console.log("Candy type not found");
+    return;
+  }
+    const totalPrice = candy[1] * weight;
+    boughtCandyPrices.push(totalPrice)
+}
+addCandy("sweet", 10);
+addCandy("sweet", 20);
+addCandy("bla", 10);
+
+console.log(boughtCandyPrices);
+
+const amountToSpend = Math.random() * 100;
+console.log(amountToSpend);
+
+let totalCandySpending = 0;
+for (let i = 0; i < boughtCandyPrices.length; i++) {
+    totalCandySpending += boughtCandyPrices[i];
+}
+
+function canBuyMoreCandy(){
+
+    if (totalCandySpending < amountToSpend) {
+        console.log("You can buy more, so please do!")
+    }
+    else if (boughtCandyPrices > amountToSpend) {
+        console.log("Enough candy for you!")
+    }
+}
+
+canBuyMoreCandy();
+
+// I'm not sure if I understood the task but this was fun to code 
