@@ -50,3 +50,24 @@ console.log(getEventWeekday(5));
 
 // uh so many issues with this one, I would never be able to solve this without internet and ChatGPT help, I'm not sure if I would know how to solve this if one small thing change 
 // task seems so simple but getting there was not simple 
+
+
+// Exercise 4: Weather wear
+
+function whatsTheWeather(temperature) {
+    if (temperature <= 0) {
+        console.log("Wear a warm coat with hat, scarf and gloves")
+    } else if (temperature > 0 && temperature <= 7) {
+        console.log("Wear a coat")
+    } else if (temperature > 7 && temperature <= 15) {
+        console.log("Wear a light coat");
+    } else if (temperature > 15 && temperature <= 20) {
+        console.log("Wear a long sleeve shirt, maybe hoodie, but have something underneath so you can take it off")
+    } else if (temperature > 20 && temperature <= 30) {
+        console.log("Wear a t-shirt with shorts")
+    } else {
+        console.log("Go to the beach its too hot")
+    }
+}
+
+console.log(whatsTheWeather(100))
