@@ -71,3 +71,38 @@ function whatsTheWeather(temperature) {
 }
 
 console.log(whatsTheWeather(100))
+
+// Exercise 5: Student manager
+
+const class07Students = [];
+function addStudentToClass(studentName) {
+    if (!studentName) {
+        console.log("You need to write your name")
+    } else if (class07Students.includes(studentName)){
+        console.log("Student " + studentName + " is already in the class");
+    } else if (studentName === "Queen of Denmark" || studentName === "Queen" || studentName === "The Queen Bee" || studentName === "Regina" || studentName === "Majesty") {
+        class07Students.push(studentName);
+    } else if (class07Students.length >= 6){
+        console.log("Cannot add more students to class 07");
+    } else {
+        class07Students.push(studentName);
+    } 
+}
+
+addStudentToClass("Iro Kai");
+addStudentToClass("Kosta Kai Ugrina");
+addStudentToClass("David Christmas");
+addStudentToClass("Brad Pitt");
+addStudentToClass("Angelina Jolie");
+addStudentToClass("Pedro Pascal");
+addStudentToClass("Jennifer Aniston");
+addStudentToClass("Iro Kai");
+addStudentToClass("The Queen Bee");
+
+console.log(class07Students);
+
+function getNumberOfStudents() {
+  console.log(class07Students.length);
+}
+
+getNumberOfStudents();
