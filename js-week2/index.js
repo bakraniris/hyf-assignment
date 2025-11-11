@@ -31,4 +31,22 @@ const fullName4 = getFullName2(true)
 /* I would add another check to ask for a gender
 then I would add forth parameter 
 and add an additional condition if it was a true then print "Lady"
- */
+*/
+
+
+
+// Exercise 3: Event application
+
+
+function getEventWeekday (daysToTheEvent) {
+    const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    const today = new Date();
+    const todayIndex = today.getDay();
+    const eventIndex = (todayIndex + daysToTheEvent) % 7;
+    return weekdays[eventIndex];
+}
+
+console.log(getEventWeekday(5));
+
+// uh so many issues with this one, I would never be able to solve this without internet and ChatGPT help, I'm not sure if I would know how to solve this if one small thing change 
+// task seems so simple but getting there was not simple 
