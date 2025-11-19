@@ -122,9 +122,6 @@ logOutSeriesText();
 
 
 
-
-
-
 // Smart-ease - Back to the basics! - NOnoN0nOYes (Note taking app)
 
 const notes = [];
