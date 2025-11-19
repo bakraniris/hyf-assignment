@@ -79,7 +79,7 @@ const seriesDurations = [
 
 //   const theOfficeDurationMinutes = (seriesDurations[2].days * 24 * 60) + (seriesDurations[2].hours * 60) + seriesDurations[2].minutes;
 //   const theOfficeNumber = (theOfficeDurationMinutes / lifeMinutes) * 100;
-//   const theOfficePercentage = ((theOfficeDurationMinutes / lifeMinutes) * 100).toFixed(3);;
+//   const theOfficePercentage = ((theOfficeDurationMinutes / lifeMinutes) * 100).toFixed(3);
 
 //   const totalPercentage = (dragonPrinceNumber + theWalkingDeadNumber + theOfficeNumber).toFixed(3);
 
@@ -96,6 +96,32 @@ const seriesDurations = [
 
 
 // I need a better solution for this
+
+
+function logOutSeriesText() {
+  const lifeMinutes = 80 * 365 * 24 * 60;
+  const seriesNumberForTotal = [];
+  for (i = 0; i < seriesDurations.length; i++) {
+      const seriesMinutes = (seriesDurations[i].days * 24 * 60) + (seriesDurations[i].hours * 60) + seriesDurations[i].minutes;
+      const seriesPercentage = ((seriesMinutes / lifeMinutes) * 100);
+      seriesNumberForTotal.push(seriesPercentage);
+
+      console.log(seriesDurations[i].title + " took " + seriesPercentage.toFixed(3) + " % of my life.")
+    }
+    let totalPercentage = 0;
+    for (i = 0; i < seriesNumberForTotal.length; i++){
+        totalPercentage += seriesNumberForTotal[i];
+    }
+    console.log("In total that is " + totalPercentage.toFixed(3) + "% of my life.")
+    
+}
+
+logOutSeriesText(); 
+
+// I misunderstood the task, but I wanted to leave first version 
+
+
+
 
 
 
