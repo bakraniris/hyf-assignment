@@ -182,3 +182,6 @@ function mostTimeSpent() {
 }
 
 mostTimeSpent();
+
+
+// I did the tasks in the random folder because I had issues with git and I had a meeting with Karolina so I wanted to be prepared with questions about the assignment so I had to finish the assignment before our meeting, and on the meeting she helped me with the git issue so I had to copy paste all the tasks into this file after everything was working again. Anyway thats short explanation why I have commit after commit in a couple of minutes.
