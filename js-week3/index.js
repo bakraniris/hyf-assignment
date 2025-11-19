@@ -116,3 +116,69 @@ saveNote("Color your hair in neon pink color", 3);
 
 console.log(notes);
 
+
+//Smart-ease - Back to the basics! - CactusIO-interactive (Smart phone usage app) optional
+
+const activities = [];
+
+function addActivity(date, activity, duration) {
+  activities.push({
+    date,
+    activity,
+    duration,
+  });
+}
+function today() {
+  const today = new Date();
+
+  return today.toLocaleDateString("en-US");
+}
+
+console.log(today());
+
+addActivity(today(), "Coding", 30);
+addActivity(today(), "TikTok", 90);
+addActivity(today(), "Homework", 300);
+
+console.log(activities);
+
+function showStatus() {
+  let sum = 0;
+
+  for (let i = 0; i < activities.length; i++) {
+    sum += activities[i].duration;
+  }
+
+  if (activities.length === 0) {
+    console.log("Add some activities before calling showStatus");
+  } else if (activities.length === 1) {
+    console.log(
+      "You have added 1 activity. The amount of usage is " +
+        activities[0].duration +
+        " minutes."
+    );
+  } else if (sum > 400) {
+    console.log("You have reached your limit, no more smartphoning for you!");
+  } else {
+    console.log(
+      "You have added " +
+        activities.length +
+        " activities. They amount to " +
+        sum +
+        " min. of usage"
+    );
+  }
+}
+
+showStatus();
+
+function mostTimeSpent() {
+  const mostTimeSpent = Math.max(...activities.map((a) => a.duration));
+  console.log(mostTimeSpent);
+  const mostTimeSpentActivity = activities.find(
+    (a) => a.duration === mostTimeSpent
+  );
+  console.log(mostTimeSpentActivity);
+}
+
+mostTimeSpent();
