@@ -96,3 +96,23 @@ const seriesDurations = [
 
 
 // I need a better solution for this
+
+
+
+// Smart-ease - Back to the basics! - NOnoN0nOYes (Note taking app)
+
+const notes = [];
+
+function saveNote(content, id) {
+  notes.push({
+    content,
+    id,
+  });
+}
+
+saveNote("Buy milk", 1);
+saveNote("Pick up a new plant", 2);
+saveNote("Color your hair in neon pink color", 3);
+
+console.log(notes);
+
