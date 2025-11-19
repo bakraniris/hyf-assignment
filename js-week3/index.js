@@ -18,3 +18,5 @@ if (nameToRemoveIndex !== -1) {
 }
 
 console.log(names);
+
+// Im going to try and add another solution that can eliminate "ahmad", not only "Ahmad"
