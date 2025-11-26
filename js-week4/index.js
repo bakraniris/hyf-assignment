@@ -5,6 +5,30 @@ import Artyom from "artyom.js";
 // const artyom = require("artyom.js");
 const artyom = new Artyom();
 
+let userName = "";
+let todos = [];
+
+function getReply(command) {
+    command = command.toLowerCase()
+
+    if (command.startsWith("hello my name is")) {
+    const name = command.replace("hello my name is", "").trim();
+    if (userName === name) {
+      return "You already told me your name is " + name;
+    } if (userName) {
+      return "You already told me your name is " + userName;
+    } else userName = name;
+    return "Nice to meet you " + name;
+  }
+
+  if (command === "what is my name?" || command === "what is my name") {
+    if (!userName) {
+      return "I don't know your name yet";
+    }
+    return "Your name is " + userName;
+  }
+}
+
 function isgetReplyAvailable() {
   return typeof getReply !== "undefined" && typeof getReply === "function";
 }
