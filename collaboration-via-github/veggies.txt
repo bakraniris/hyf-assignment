@@ -1,6 +1,7 @@
 potato
 tomato
 spinach
+eggplant
 carrot
 pepper
 broccoli
