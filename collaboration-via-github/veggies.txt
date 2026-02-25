@@ -1,5 +1,7 @@
 potato
 tomato
-cucumber
+spinach
 carrot
 pepper
+broccoli
+zucchini
