@@ -1,12 +1,17 @@
-const button = document.querySelector('.color-button');
-let isDark = false;
+const button = document.querySelector(".color-button");
 
-button.addEventListener('click', () => {
-  if (!isDark) {
-    document.body.style.backgroundColor = '#5b2a86';
-    isDark = true;
-  } else {
-    document.body.style.backgroundColor = '#ffd3e6';
-    isDark = false;
+if (button) {
+  if (localStorage.getItem("theme") === "dark") {
+    document.body.classList.add("dark");
   }
-});
+
+  button.addEventListener("click", () => {
+    document.body.classList.toggle("dark");
+
+    if (document.body.classList.contains("dark")) {
+      localStorage.setItem("theme", "dark");
+    } else {
+      localStorage.setItem("theme", "light");
+    }
+  });
+}
