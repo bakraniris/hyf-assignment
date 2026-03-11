@@ -7,3 +7,6 @@ let newNumbers = numbers
   .map(n => n * 2);
 
 console.log(newNumbers); 
+
+// Task 2 Codewars
+// Link to my Codewars: https://www.codewars.com/users/bakraniris
