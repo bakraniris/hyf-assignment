@@ -10,3 +10,7 @@ const longTitleMovies = movies
 
 console.log(longTitleMovies);
 
+const movies80s = movies.filter(movie => movie.year >= 1980 && movie.year <= 1989);
+const count80s = movies80s.length;
+
+console.log(count80s);
