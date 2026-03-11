@@ -25,3 +25,13 @@ const ratingsOver6 = movies
   .map(movie => movie.rating);
 
 console.log(ratingsOver6);
+
+const keywordCount = movies.reduce((count, movie) => {
+  const title = movie.title.toLowerCase();
+  if (title.includes("surfer") || title.includes("alien") || title.includes("benjamin")) {
+    return count + 1;
+  }
+  return count;
+}, 0);
+
+console.log(keywordCount);
