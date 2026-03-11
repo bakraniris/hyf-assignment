@@ -3,3 +3,10 @@ const movies = [{"title": "'71","year": 2014,"rating": 7.2,"votes": 41702,"runni
 const shortTitleMovies = movies.filter(movie => movie.title.length < 5);
 
 console.log(shortTitleMovies);
+
+const longTitleMovies = movies
+  .filter(movie => movie.title.length > 10)
+  .map(movie => movie.title);
+
+console.log(longTitleMovies);
+
