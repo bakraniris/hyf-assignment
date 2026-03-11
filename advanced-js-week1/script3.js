@@ -4,27 +4,70 @@ const shortTitleMovies = movies.filter(movie => movie.title.length < 5);
 
 console.log(shortTitleMovies);
 
+var shortTitlesHtml = "<p class='stat'>" + shortTitleMovies.length + " movies found</p>";
+for (var i = 0; i < shortTitleMovies.length; i++) {
+  shortTitlesHtml += "<div class='movie-pill'><strong>" + shortTitleMovies[i].title + "</strong> (" + shortTitleMovies[i].year + ") — ★ " + shortTitleMovies[i].rating + "</div>";
+}
+document.getElementById("short-titles").innerHTML = shortTitlesHtml;
+
 const longTitleMovies = movies
   .filter(movie => movie.title.length > 10)
   .map(movie => movie.title);
 
 console.log(longTitleMovies);
 
+var longTitlesHtml = "<p class='stat'>" + longTitleMovies.length + " titles</p>";
+longTitlesHtml += "<div class='pill-list'>";
+for (var i = 0; i < longTitleMovies.length; i++) {
+  longTitlesHtml += "<span class='pill'>" + longTitleMovies[i] + "</span>";
+}
+longTitlesHtml += "</div>";
+document.getElementById("long-titles").innerHTML = longTitlesHtml;
+
 const movies80s = movies.filter(movie => movie.year >= 1980 && movie.year <= 1989);
 const count80s = movies80s.length;
 
 console.log(count80s);
+
+var movies80sHtml = "<p class='stat big-number'>" + count80s + "</p>";
+for (var i = 0; i < 20 && i < movies80s.length; i++) {
+  movies80sHtml += "<div class='movie-pill'><strong>" + movies80s[i].title + "</strong> (" + movies80s[i].year + ") — ★ " + movies80s[i].rating + "</div>";
+}
+if (movies80s.length > 20) {
+  movies80sHtml += "<p class='more'>…and " + (movies80s.length - 20) + " more</p>";
+}
+document.getElementById("movies-80s").innerHTML = movies80sHtml;
 
 const taggedMovies = movies.map(movie => ({
   ...movie,
   tag: movie.rating >= 7 ? "Good" : movie.rating >= 4 ? "Average" : "Bad"
 }));
 
+var taggedHtml = "";
+for (var i = 0; i < 30 && i < taggedMovies.length; i++) {
+  taggedHtml += "<div class='movie-pill tag-" + taggedMovies[i].tag.toLowerCase() + "'><strong>" + taggedMovies[i].title + "</strong> — <span class='tag'>" + taggedMovies[i].tag + "</span></div>";
+}
+if (taggedMovies.length > 30) {
+  taggedHtml += "<p class='more'>…and " + (taggedMovies.length - 30) + " more</p>";
+}
+document.getElementById("tagged-movies").innerHTML = taggedHtml;
+
 const ratingsOver6 = movies
   .filter(movie => movie.rating > 6)
   .map(movie => movie.rating);
 
 console.log(ratingsOver6);
+
+var ratingsHtml = "<p class='stat'>" + ratingsOver6.length + " movies with rating > 6</p>";
+ratingsHtml += "<div class='pill-list'>";
+for (var i = 0; i < 60 && i < ratingsOver6.length; i++) {
+  ratingsHtml += "<span class='pill rating-pill'>★ " + ratingsOver6[i] + "</span>";
+}
+ratingsHtml += "</div>";
+if (ratingsOver6.length > 60) {
+  ratingsHtml += "<p class='more'>…and " + (ratingsOver6.length - 60) + " more</p>";
+}
+document.getElementById("ratings-over-6").innerHTML = ratingsHtml;
 
 const keywordCount = movies.reduce((count, movie) => {
   const title = movie.title.toLowerCase();
@@ -35,6 +78,8 @@ const keywordCount = movies.reduce((count, movie) => {
 }, 0);
 
 console.log(keywordCount);
+
+document.getElementById("keyword-count").innerHTML = "<p class='stat big-number'>" + keywordCount + "</p>";
 
 const duplicatedWordMovies = movies.filter(function(movie) {
   const words = movie.title.toLowerCase().split(' ');
@@ -51,11 +96,19 @@ const duplicatedWordMovies = movies.filter(function(movie) {
 
 console.log(duplicatedWordMovies);
 
+var duplicatedHtml = "<p class='stat'>" + duplicatedWordMovies.length + " movies</p>";
+for (var i = 0; i < duplicatedWordMovies.length; i++) {
+  duplicatedHtml += "<div class='movie-pill'><strong>" + duplicatedWordMovies[i].title + "</strong> (" + duplicatedWordMovies[i].year + ") — ★ " + duplicatedWordMovies[i].rating + "</div>";
+}
+document.getElementById("duplicated-words").innerHTML = duplicatedHtml;
+
 const averageRating = movies.reduce(function(sum, movie) {
   return sum + movie.rating;
 }, 0) / movies.length;
 
 console.log(averageRating);
+
+document.getElementById("average-rating").innerHTML = "<p class='stat big-number'>★ " + averageRating.toFixed(2) + "</p>" + "<p class='detail'>Across " + movies.length + " movies</p>";
 
 const movieCounts = movies.reduce(function(acc, movie) {
   if (movie.rating >= 7) {
@@ -69,3 +122,5 @@ const movieCounts = movies.reduce(function(acc, movie) {
 }, { goodMovies: 0, averageMovies: 0, badMovies: 0 });
 
 console.log(movieCounts);
+
+document.getElementById("movie-counts").innerHTML = "<div class='count-grid'><div class='count-item good'><span class='count-number'>" + movieCounts.goodMovies + "</span><span class='count-label'>Good (≥ 7)</span></div><div class='count-item average'><span class='count-number'>" + movieCounts.averageMovies + "</span><span class='count-label'>Average (4–7)</span></div><div class='count-item bad'><span class='count-number'>" + movieCounts.badMovies + "</span><span class='count-label'>Bad (< 4)</span></div></div>";
