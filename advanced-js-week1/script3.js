@@ -14,3 +14,14 @@ const movies80s = movies.filter(movie => movie.year >= 1980 && movie.year <= 198
 const count80s = movies80s.length;
 
 console.log(count80s);
+
+const taggedMovies = movies.map(movie => ({
+  ...movie,
+  tag: movie.rating >= 7 ? "Good" : movie.rating >= 4 ? "Average" : "Bad"
+}));
+
+const ratingsOver6 = movies
+  .filter(movie => movie.rating > 6)
+  .map(movie => movie.rating);
+
+console.log(ratingsOver6);
