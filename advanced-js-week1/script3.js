@@ -35,3 +35,18 @@ const keywordCount = movies.reduce((count, movie) => {
 }, 0);
 
 console.log(keywordCount);
+
+const duplicatedWordMovies = movies.filter(function(movie) {
+  const words = movie.title.toLowerCase().split(' ');
+  const wordSet = [];
+  for (let i = 0; i < words.length; i++) {
+    if (wordSet.includes(words[i])) {
+      return true;
+    } else {
+      wordSet.push(words[i]);
+    }
+  }
+  return false;
+});
+
+console.log(duplicatedWordMovies);
