@@ -50,3 +50,22 @@ const duplicatedWordMovies = movies.filter(function(movie) {
 });
 
 console.log(duplicatedWordMovies);
+
+const averageRating = movies.reduce(function(sum, movie) {
+  return sum + movie.rating;
+}, 0) / movies.length;
+
+console.log(averageRating);
+
+const movieCounts = movies.reduce(function(acc, movie) {
+  if (movie.rating >= 7) {
+    acc.goodMovies += 1;
+  } else if (movie.rating >= 4) {
+    acc.averageMovies += 1;
+  } else {
+    acc.badMovies += 1;
+  }
+  return acc;
+}, { goodMovies: 0, averageMovies: 0, badMovies: 0 });
+
+console.log(movieCounts);
