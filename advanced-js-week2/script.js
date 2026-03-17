@@ -17,3 +17,19 @@ logAfterDelay(10, "Logged after 10 seconds", "text2");
 document.getElementById("button").addEventListener("click", () => {
   logAfterDelay(5, "Called after 5 seconds", "text3");
 });
+
+function earthLogger() {
+  document.getElementById("planets").innerText += "Earth\n";
+}
+
+function saturnLogger() {
+  document.getElementById("planets").innerText += "Saturn\n";
+}
+
+function planetLogFunction(loggerFunction) {
+  loggerFunction();
+}
+
+planetLogFunction(earthLogger)
+planetLogFunction(saturnLogger)
+
