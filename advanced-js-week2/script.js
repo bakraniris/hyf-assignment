@@ -73,3 +73,12 @@ document.getElementById("runButton").addEventListener("click", () => {
   });
 });
 
+let lastClickTime = 0;
+
+document.addEventListener("click", () => {
+  const now = Date.now();
+  if (now - lastClickTime <= 500) {
+    document.getElementById("doubleClick").innerText = "You had a double click somewhere on the page!";
+  }
+  lastClickTime = now;
+});
