@@ -61,3 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   })
 })
+
+function runAfterDelay(delay, callback) {
+  setTimeout(callback, delay * 1000);
+}
+
+document.getElementById("runButton").addEventListener("click", () => {
+  const delay = Number(document.getElementById("delayInput").value);
+  runAfterDelay(delay, () => {
+    document.getElementById("delayedOutput").innerText = `Callback ran after ${delay} seconds`;
+  });
+});
+
