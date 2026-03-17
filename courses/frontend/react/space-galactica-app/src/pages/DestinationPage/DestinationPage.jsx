@@ -1,9 +1,14 @@
-import { useState } from "react";
-import styles from "./DestinationPage.module.css";
+import { useState } from 'react';
 
-// 🧑🏽‍🚀 Task - Week 2
-// Move this to its own file in this folder.
-const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
+import styles from './DestinationPage.module.css';
+
+// Task - Week 2
+// Move this to its own file
+const PlanetWishlistItem = ({
+  name,
+  onRemove,
+  thumbnail,
+}) => {
   return (
     <div className={styles.wishlistItem}>
       <img className={styles.wishlistItemThumbnail} src={thumbnail} alt="" />
@@ -11,31 +16,22 @@ const PlanetsWishlistItem = ({ name, thumbnail, onRemove }) => {
       <button onClick={onRemove}>remove</button>
     </div>
   );
-};
+}
+
 
 export const Destinations = () => {
-  const [planetsWishlist, setPlanetsWishlist] = useState([]);
+  const [selectedPlanets, onAddPlanet] = useState([]);
 
-  const isPlanetInWishlist = (planetName) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // This should be a simple function to check if a given planet is selected.
-    // You will need to work with the array of planets wishlist.
-  };
+  let isPlanetSelected = false;
+  let numberOfPlanets = 0;
 
-  const togglePlanetSelection = (name, thumbnail) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // When a planet is selected or deselected (toggled), the state of the wishlist planets should be updated accordingly by 
-    // calling the addPlanetToWishlist or removePlanetFromWishlist function. You will need a condition here.
-  };
-
-  const addPlanetToWishlist = (name, thumbnail) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // Add the planet to the planets wishlist state.
-  };
-  const removePlanetFromWishlist = (name) => {
-    // 🧑🏽‍🚀 Task - Week 2
-    // Remove the planet from the planets wishlist state.
-  };
+  const onAddOrRemovePlanet = (name, index) => {
+    // Task - Week 2
+    // Implement this function
+    // If you press the "ADD PLANET" the selected planet should display "SELECTED"
+    // And the counter should update, how many planets are selected (numberOfPlanets)
+    console.log(`You seleceted the following planet: ${name}, with the index of ${index}`);
+  }
 
   return (
     <div className="fullBGpicture">
@@ -43,76 +39,73 @@ export const Destinations = () => {
         <h1>Travel destinations</h1>
         <section className="card">
           <h2>Wishlist</h2>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Display the number of wishlist planets, if there are any planets in the wishlist. */}
-          {/* Display the "no planets" message if the wishlist is empty. */}
-          <p>No planets in your wishlist :(</p>
-          {/* 🧑🏽‍🚀 Use a variable to display the number of wishlist planets:  */}
-          <p>You have X planets in your wishlist</p>
-
-          {/* 🧑🏽‍🚀 Task - Week 3 */}
-          {/* Use the AddWishlistItem component here. */}
-
-          {/* 🧑🏽‍🚀 Task - Week 3
+          {/* Task - Week 2 */}
+          {/* Display the number Of selected planets */}
+          {/* Display the "no planets" message if it is empty! */}
+          <p>No planets in wishlist :(</p>
+          <p>You have {numberOfPlanets} in your wishlist</p>
+          <b>List coming soon after lesson 3!</b>
+          
+          {/* STOP! - this is for week 3!*/}
+          {/* Task - Week 3 */}
+          {/* Import the AddWishlistItem react component */}
+          {/* <AddWishlistItem /> */}
+          {/* Task - Week 3 */}
+          {/* Convert the list, so it is using selectedPlanets.map() to display the items  */}
+          {/* Implement the "REMOVE" function */}
+          {/* uncomment the following code snippet: */}
+          {/* 
           <h3>Your current wishlist</h3>
           <div className={styles.wishlistList}>
-            ...
-            Use .map() to display the wishlist planets with the PlanetsWishlistItem component. 
-          </div> 
-          */}
+            <PlanetWishlistItem 
+              name="europa"
+              onRemove={() => removeFromWishlist('europa')}
+              thumbnail="/destination/image-europa.png"
+            />
+            <PlanetWishlistItem 
+              name="europa"
+              onRemove={() => removeFromWishlist('europa')}
+              thumbnail="/destination/image-europa.png"
+            />
+          </div> */}
         </section>
         <section className="card">
           <h2>Possible destinations</h2>
-          {/* 🧑🏽‍🚀 Task - Week 2 */}
-          {/* Add all 4 planets: Europa, Moon, Mars, Titan.  */}
-          {/* Use the README.md file for descriptions. */}
-          {/* Create a <PlanetCard /> component, which accepts the following props: name, description, thumbnail, isSelected, togglePlanetSelection */}
+          {/* Task - Week 2 */}
+          {/* Add all 4 planets! Europa, Moon, Mars, Titan  */}
+          {/* Use the README.md file for descriptions */}
+          {/* Create a <PlanetCard /> component, which accepts the following properties: */}
+          {/* name, description, thumbnail, isSelected, onAddOrRemovePlanet */}
           <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-europa.png"
-              alt=""
-            />
+            <img className={styles.planetThumbnail} src="/destination/image-europa.png" alt="" />
             <div className={styles.planetDescription}>
-              <h2>EUROPA {isPlanetInWishlist("Europa") ? "- SELECTED" : ""}</h2>
+              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
               <p>Lorem ipsum...</p>
             </div>
-            <button
-              className="roundButton"
-              onClick={() => togglePlanetSelection("Europa")}>
-              {isPlanetInWishlist("Europa")
-                ? "REMOVE FROM WISHLIST"
-                : "ADD TO WISHLIST"}
+            <button 
+              className="roundButton" 
+              onClick={() => onAddOrRemovePlanet('Pluto', 0)}
+            > 
+              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
             </button>
           </div>
           <div className={styles.planetCard}>
-            <img
-              className={styles.planetThumbnail}
-              src="/destination/image-mars.png"
-              alt=""
-            />
+            <img className={styles.planetThumbnail} src="/destination/image-europa.png" alt="" />
             <div className={styles.planetDescription}>
-              <h2>MARS {isPlanetInWishlist("Mars") ? "- SELECTED" : ""}</h2>
+              <h2>EUROPA {isPlanetSelected ? "- SELECTED" : ""}</h2>
               <p>Lorem ipsum...</p>
             </div>
-            <button
-              className="roundButton"
-              onClick={() => togglePlanetSelection("Mars")}>
-              {isPlanetInWishlist("Mars")
-                ? "REMOVE FROM WISHLIST"
-                : "ADD TO WISHLIST"}
+            <button 
+              className="roundButton" 
+              onClick={() => onAddOrRemovePlanet('Pluto', 0)}
+            > 
+              {isPlanetSelected ? "REMOVE" : "ADD PLANET"}
             </button>
           </div>
         </section>
       </main>
     </div>
   );
-};
+}
 
 export default Destinations;
-
-
-// 🧑🏽‍🚀 Task - Week 4 - part 2
-// Hate to break it to you, but you will have to make some changes to the code you already wrote.
-// Now that you have context, grab and use the context data in this.
-// You will need to replace some of the variables and functions with the ones from the context.

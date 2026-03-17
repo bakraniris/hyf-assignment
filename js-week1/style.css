@@ -1,0 +1,119 @@
+/* NOTE: CSS is ChatGPT generated, inspired by AI week and learning about prompts */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #f7eff2;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+section {
+    background-color: #d8b8f3;
+    padding: 30px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    width: 100%;
+    max-width: 600px;
+    text-align: center;
+}
+
+h1 {
+    margin-bottom: 20px;
+    font-size: 1.8rem;
+    color: #9b59b6;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: #9b59b6;
+}
+
+input[type="number"] {
+    width: 60%;
+    padding: 10px 12px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+input[type="number"]:focus {
+    border-color: #9b59b6;
+    box-shadow: 0 0 5px rgba(155, 89, 182, 0.3);
+    outline: none;
+}
+
+
+section:nth-of-type(-n+3) button {
+    background-color: #9b59b6;
+    color: #fff;
+    border: none;
+    padding: 18px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+section:nth-of-type(-n+3) button:hover {
+    background-color: #7d3c98;
+    transform: translateY(-2px);
+}
+
+
+section:nth-of-type(4) button {
+    background-color: #9b59b6;
+    color: #fff;
+    border: none;
+    padding: 36px 60px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 3rem;
+    transition: background 0.3s ease, transform 0.2s ease;
+}
+
+section:nth-of-type(4) button:hover {
+    background-color: #7d3c98;
+    transform: translateY(-2px);
+}
+
+form {
+    margin-bottom: 10px;
+}
+
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+    
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    input[type="number"] {
+        width: 80%;
+    }
+    
+    section:nth-of-type(-n+3) button {
+        font-size: 1.2rem;
+        padding: 14px 24px;
+    }
+    
+    section:nth-of-type(4) button {
+        font-size: 2rem;
+        padding: 24px 40px;
+    }
+}
