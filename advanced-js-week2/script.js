@@ -82,3 +82,36 @@ document.addEventListener("click", () => {
   }
   lastClickTime = now;
 });
+
+const funnyJokes = [
+  "Why don’t programmers like nature? Too many bugs.",
+  "Why do Java developers wear glasses? Because they don’t C#.",
+  "How many programmers does it take to change a light bulb? None, that's a hardware problem.",
+  "Why did the developer go broke? Because he used up all his cache."
+];
+
+const badJokes = [
+  "I would tell you a joke about JavaScript... but it might not return.",
+  "Why did the function break up? It had too many arguments.",
+  "I tried to catch fog yesterday... Mist!",
+  "Why don’t skeletons fight each other? They don’t have the guts."
+];
+
+function logFunnyJoke() {
+  const randomIndex = Math.floor(Math.random() * funnyJokes.length);
+  document.getElementById("joke").innerText = funnyJokes[randomIndex];
+}
+
+function logBadJoke() {
+  const randomIndex = Math.floor(Math.random() * badJokes.length);
+  document.getElementById("joke").innerText = badJokes[randomIndex];
+}
+
+function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
+  if (shouldTellFunnyJoke) {
+    logFunnyJoke();
+  } else {
+    logBadJoke();
+  }
+}
+jokeCreator(true, logFunnyJoke, logBadJoke);
