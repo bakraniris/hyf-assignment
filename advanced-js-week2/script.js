@@ -33,3 +33,31 @@ function planetLogFunction(loggerFunction) {
 planetLogFunction(earthLogger)
 planetLogFunction(saturnLogger)
 
+
+document.addEventListener("DOMContentLoaded", () => {
+  document.getElementById("locationButton").addEventListener("click", () => {
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(position => {
+        const lat = position.coords.latitude
+        const lon = position.coords.longitude
+        document.getElementById("location").innerText = `Latitude: ${lat}, Longitude: ${lon}`
+
+        const map = new google.maps.Map(document.getElementById("map"), {
+          center: { lat, lng: lon },
+          zoom: 15
+        })
+
+        new google.maps.Marker({
+          position: { lat, lng: lon },
+          map: map,
+          title: "You are here"
+        })
+
+      }, error => {
+        document.getElementById("location").innerText = "Unable to retrieve location"
+      })
+    } else {
+      document.getElementById("location").innerText = "Geolocation is not supported by this browser"
+    }
+  })
+})
