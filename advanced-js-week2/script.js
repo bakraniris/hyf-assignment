@@ -115,3 +115,34 @@ function jokeCreator(shouldTellFunnyJoke, logFunnyJoke, logBadJoke) {
   }
 }
 jokeCreator(true, logFunnyJoke, logBadJoke);
+
+// Function as a variable
+
+const functionsArray = [
+  function() { console.log("Function 1"); },
+  function() { console.log("Function 2"); },
+  function() { console.log("Function 3"); }
+];
+
+functionsArray.forEach(fn => fn());
+
+
+const functionOne = function() {
+  console.log("This is function one");
+};
+
+function functionTwo() {
+  console.log("This is function two");
+}
+
+functionOne();
+functionTwo();
+
+
+const myObject = {
+  sayHello: function() {
+    console.log("Hello world, this is object function");
+  }
+};
+
+myObject.sayHello();
