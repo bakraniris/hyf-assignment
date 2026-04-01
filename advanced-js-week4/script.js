@@ -31,3 +31,58 @@ button.addEventListener("click", function () {
       console.log(error);
     });
 });
+
+const saveBtn = document.getElementById("saveBtn");
+
+saveBtn.addEventListener("click", function () {
+  const url = input.value;
+  const screenshot = image.src;
+
+  if (!screenshot) return; 
+
+  fetch("https://crudcrud.com/api/b1e55b146b7648719acabac5eda7efcd/screenshots", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      url: url,
+      screenshotUrl: screenshot
+    })
+  })
+    .then(res => res.json())
+    .then(data => {
+      console.log("Saved:", data);
+      alert("Screenshot saved!");
+    })
+    .catch(err => console.log(err));
+});
+
+const gallery = document.getElementById("gallery");
+
+function loadScreenshots() {
+  fetch("https://crudcrud.com/api/b1e55b146b7648719acabac5eda7efcd/screenshots")
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (data) {
+      console.log("All screenshots:", data);
+
+      gallery.innerHTML = "";
+
+      data.forEach(function (item) {
+        const div = document.createElement("div");
+
+        div.innerHTML = `
+          <img src="${item.screenshotUrl}" width="300" />
+          <p>${item.url}</p>
+        `;
+
+        gallery.appendChild(div);
+      });
+    })
+    .catch(function (err) {
+      console.log(err);
+    });
+}
+loadScreenshots();
