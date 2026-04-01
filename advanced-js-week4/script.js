@@ -76,6 +76,7 @@ function loadScreenshots() {
         div.innerHTML = `
           <img src="${item.screenshotUrl}" width="300" />
           <p>${item.url}</p>
+          <button data-id="${item._id}" class="deleteBtn">Delete</button>
         `;
 
         gallery.appendChild(div);
@@ -86,3 +87,19 @@ function loadScreenshots() {
     });
 }
 loadScreenshots();
+
+document.addEventListener("click", function (e) {
+  if (e.target.classList.contains("deleteBtn")) {
+    const id = e.target.getAttribute("data-id");
+
+    fetch(`https://crudcrud.com/api/b1e55b146b7648719acabac5eda7efcd/screenshots/${id}`, {
+      method: "DELETE"
+    })
+      .then(function () {
+        loadScreenshots();
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }
+});
