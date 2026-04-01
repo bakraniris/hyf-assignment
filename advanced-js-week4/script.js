@@ -60,6 +60,26 @@ saveBtn.addEventListener("click", function () {
 
 const gallery = document.getElementById("gallery");
 
+class Screenshot {
+  constructor(url, screenshotUrl, id) {
+    this.url = url;
+    this.screenshotUrl = screenshotUrl;
+    this.id = id;
+  }
+
+  render() {
+    const div = document.createElement("div");
+
+    div.innerHTML = `
+      <img src="${this.screenshotUrl}" width="300" />
+      <p>${this.url}</p>
+      <button data-id="${this.id}" class="deleteBtn">Delete</button>
+    `;
+
+    return div;
+  }
+}
+
 function loadScreenshots() {
   fetch("https://crudcrud.com/api/b1e55b146b7648719acabac5eda7efcd/screenshots")
     .then(function (res) {
@@ -71,15 +91,13 @@ function loadScreenshots() {
       gallery.innerHTML = "";
 
       data.forEach(function (item) {
-        const div = document.createElement("div");
+        const screenshot = new Screenshot(
+          item.url,
+          item.screenshotUrl,
+          item._id
+        );
 
-        div.innerHTML = `
-          <img src="${item.screenshotUrl}" width="300" />
-          <p>${item.url}</p>
-          <button data-id="${item._id}" class="deleteBtn">Delete</button>
-        `;
-
-        gallery.appendChild(div);
+        gallery.appendChild(screenshot.render());
       });
     })
     .catch(function (err) {
