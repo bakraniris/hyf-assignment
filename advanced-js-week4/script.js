@@ -2,6 +2,17 @@ const input = document.getElementById("urlInput");
 const button = document.getElementById("generateBtn");
 const image = document.getElementById("screenshot");
 
+class AppError extends Error {
+  constructor(message, userMessage) {
+    super(message);
+    this.userMessage = userMessage;
+  }
+
+  toUserMessage() {
+    return this.userMessage;
+  }
+}
+
 button.addEventListener("click", function () {
   const url = input.value;
 
@@ -27,35 +38,49 @@ button.addEventListener("click", function () {
         image.src = data.screenshotUrl;
       }
     })
-    .catch(function (error) {
-      console.log(error);
-    });
+    .catch(err => {
+    const error = new AppError(err.message, "Error. Try again!");
+    alert(error.toUserMessage());
+});
 });
 
 const saveBtn = document.getElementById("saveBtn");
 
-saveBtn.addEventListener("click", function () {
-  const url = input.value;
-  const screenshot = image.src;
+saveBtn.addEventListener("click", async function () {
+  try {
+    const url = input.value;
+    const screenshot = image.src;
 
-  if (!screenshot) return; 
+    if (!url) {
+      throw new AppError("Missing URL", "Please enter a URL first.");
+    }
 
-  fetch("https://crudcrud.com/api/b1e55b146b7648719acabac5eda7efcd/screenshots", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json"
-    },
-    body: JSON.stringify({
-      url: url,
-      screenshotUrl: screenshot
-    })
-  })
-    .then(res => res.json())
-    .then(data => {
-      console.log("Saved:", data);
-      alert("Screenshot saved!");
-    })
-    .catch(err => console.log(err));
+    if (!screenshot) {
+      throw new AppError("Missing screenshot", "Generate a screenshot first.");
+    }
+
+    const res = await fetch("https://crudcrud.com/api/b1e55b146b7648719acabac5eda7efcd/screenshots", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        url: url,
+        screenshotUrl: screenshot
+      })
+    });
+
+    const data = await res.json();
+    console.log("Saved:", data);
+    alert("Screenshot saved!");
+
+  } catch (err) {
+    if (err instanceof AppError) {
+      alert(err.toUserMessage());
+    } else {
+      alert("Something went wrong.");
+    }
+  }
 });
 
 const gallery = document.getElementById("gallery");
